@@ -13,7 +13,7 @@
 ## Answers
 
 
-1) Log4Shell 
+### 1) Log4Shell 
 
 Log4Shell est le nom donné à une faille de la bibliothèque open Source d'Apache Log4J qui permet la journalisation(logs).  
 
@@ -25,8 +25,6 @@ Presque tout internet est soumis à ce bug, qui permettait a des malveillants de
 
 Ce bug est considère local déjà qu’il survient lors de la saisie de l’utilisateur. Pour palier je pense qu’un test aurait pu aider à découvrir cette faille bien avant. 
 
- 
-
 https://nakedsecurity.sophos.com/2021/12/13/log4shell-explained-how-it-works-why-you-need-to-know-and-how-to-fix-it/ 
 
 https://www.01net.com/actualites/la-faillelog4shell-extremement-critique-met-la-toile-en-ebullition-2052523.html 
@@ -35,17 +33,18 @@ https://avandeursen.com/2014/08/29/think-twice-before-using-the-maintainability-
 
 https://www.lemondeinformatique.fr/actualites/lire-faille-dans-log4j-encore-un-bug-encore-un-patch-85171.html 
 
-2) https://issues.apache.org/jira/browse/COLLECTIONS-796  
 
-Bug “SetUniqueList.createSetBasedOnList doesn't add list elements to return value” 
+### 2) https://issues.apache.org/jira/browse/COLLECTIONS-796  
+
+Bug *SetUniqueList.createSetBasedOnList doesn't add list elements to return value*. 
 
 Le bug est de type local.  
 
-Explication du bug : La fonction SetUniqueList.createSetBasedOnList retourne la liste après son appel. Mais un commit modifiant la classe SetUniqueList a également supprimé la ligne 344 “subSet.addAll(list);”. Commit : https://github.com/apache/commons-collections/commit/b1c45ac691d46a8c609f2534d2adfa59c0599527?diff=split#diff-8e53271d5d8299a76d43b0e3c81740fbe660083ae71c5bf2be63846d52156f23L344  
+Explication du bug : La fonction `SetUniqueList.createSetBasedOnList` retourne la liste après son appel. Mais un commit modifiant la classe `SetUniqueList` a également supprimé la ligne 344 `subSet.addAll(list);`. Commit : https://github.com/apache/commons-collections/commit/b1c45ac691d46a8c609f2534d2adfa59c0599527?diff=split#diff-8e53271d5d8299a76d43b0e3c81740fbe660083ae71c5bf2be63846d52156f23L344  
 
 La suppression est sûrement involontaire. 
 
-Solution du bug : rajout de la ligne “subSet.addAll(list);” dans la méthode “createSetBasedOnList” 
+Solution du bug : rajout de la ligne `subSet.addAll(list);` dans la méthode `createSetBasedOnList`.
 
 Commit de correction : https://github.com/apache/commons-collections/pull/255/files/e2564ab6e2ef22f212e09f4c7db33d1b18d803d6#diff-8e53271d5d8299a76d43b0e3c81740fbe660083ae71c5bf2be63846d52156f23R355  
 
