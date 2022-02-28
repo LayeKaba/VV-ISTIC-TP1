@@ -11,3 +11,42 @@
 5.  Shortly after the appearance of WebAssembly another paper proposed a mechanized specification of the language using Isabelle. The paper can be consulted here: https://www.cl.cam.ac.uk/~caw77/papers/mechanising-and-verifying-the-webassembly-specification.pdf. This mechanized specification complements the first formalization attempt from the paper. According to the author of this second paper, what are the main advantages of the mechanized specification? Did it help improving the original formal specification of the language? What other artifacts were derived from this mechanized specification? How did the author verify the specification? Does this new specification removes the need for testing?
 
 ## Answers
+
+
+1) Log4Shell 
+
+Log4Shell est le nom donné à une faille de la bibliothèque open Source d'Apache Log4J qui permet la journalisation(logs).  
+
+Révélée par le chercheur en sécurité Chen Zhaojun d’Alibaba Cloud Security, la faille Log4Shell permet de provoquer une connexion non souhaitée vers une ressource potentiellement malveillante par le biais de l’interface JDNI (Java Naming and Directory Interface). Il s’agit là d’un protocole qui permet de se connecter à des ressources locales ou distantes  
+
+Également connu sous le numéro CVE-2021-45105, ce bug permettait d’injecter lors des requêtes LDAP et JNDI codes qui permettaient aux attaquants d’exécuter du code java arbitraire sur un server ou un ordinateur. Il est lieu de rappeler que cette bibliothèque est utilisée par beaucoup de service, entreprises privées comme publiques, des organisations. Cette faille est considérée comme la plus importante et la plus critique de la dernière décennie. Elle a eu une note CVSS de 10. 
+
+Presque tout internet est soumis à ce bug, qui permettait a des malveillants de se connecter en local ou distance en y injectant un code malveillant. Vu le niveau d’utilisation de bibliothèque en question, tout le monde de l’internet y était affecté les géants comme les petits. 
+
+Ce bug est considère local déjà qu’il survient lors de la saisie de l’utilisateur. Pour palier je pense qu’un test aurait pu aider à découvrir cette faille bien avant. 
+
+ 
+
+https://nakedsecurity.sophos.com/2021/12/13/log4shell-explained-how-it-works-why-you-need-to-know-and-how-to-fix-it/ 
+
+https://www.01net.com/actualites/la-faillelog4shell-extremement-critique-met-la-toile-en-ebullition-2052523.html 
+
+https://avandeursen.com/2014/08/29/think-twice-before-using-the-maintainability-index/ 
+
+https://www.lemondeinformatique.fr/actualites/lire-faille-dans-log4j-encore-un-bug-encore-un-patch-85171.html 
+
+2) https://issues.apache.org/jira/browse/COLLECTIONS-796  
+
+Bug “SetUniqueList.createSetBasedOnList doesn't add list elements to return value” 
+
+Le bug est de type local.  
+
+Explication du bug : La fonction SetUniqueList.createSetBasedOnList retourne la liste après son appel. Mais un commit modifiant la classe SetUniqueList a également supprimé la ligne 344 “subSet.addAll(list);”. Commit : https://github.com/apache/commons-collections/commit/b1c45ac691d46a8c609f2534d2adfa59c0599527?diff=split#diff-8e53271d5d8299a76d43b0e3c81740fbe660083ae71c5bf2be63846d52156f23L344  
+
+La suppression est sûrement involontaire. 
+
+Solution du bug : rajout de la ligne “subSet.addAll(list);” dans la méthode “createSetBasedOnList” 
+
+Commit de correction : https://github.com/apache/commons-collections/pull/255/files/e2564ab6e2ef22f212e09f4c7db33d1b18d803d6#diff-8e53271d5d8299a76d43b0e3c81740fbe660083ae71c5bf2be63846d52156f23R355  
+
+Le commit corrigeant l’erreur n’a pas ajouté de nouveaux tests pour détecter le bug s’il se reproduit. 
