@@ -96,4 +96,28 @@ WebAssembly est fondé sur 7 concepts principaux : Modules, Functions, Instructi
 
 WebAssembly propose un graphe de flow de contrôle permettant notamment de détecter les boucles infinies. 
 
-Cela ne signifie pas que WebAssembly ne devrait pas être testé. 
+Cela ne signifie pas que WebAssembly ne devrait pas être testé.
+
+### 5) Isabelle et WebAssembly
+
+#### What are the main advantages of the mechanized specification? 
+
+Les principaux avantages de la spécification mécanisée sont : 
+- l'apport d'une preuve de la solidité du system WebAssembly
+- la détection de certains problèmes, notamment avec l'opération Trap ou Return
+
+#### Did it help improving the original formal specification of the language? 
+
+La détection de ces erreurs a permis d'améliorer la spécification du langage. Par exemple,  après avoir trouvé un contre exemple à l'opération Trap, l'équipe a fourni une solution à ce problème qui a été ajoutée à la spécification du langage.
+
+#### What other artifacts were derived from this mechanized specification?
+
+En plus de la spécification mécanisée, l'équipe a développé un Type Checker et un Interpréteur en Isabelle.
+
+#### How did the author verify the specification? 
+
+L'auteur a testé la spécification en la soumettant aux tests, en utilisant les outils CSmith et Binaryen pour convertir les tests C en WebAssembly. Aucune erreur n'a été détectée.
+
+#### Does this new specification removes the need for testing?
+
+Cette nouvelle spécification n'enlève pas le besoin de tester.
