@@ -49,3 +49,19 @@ Solution du bug : rajout de la ligne `subSet.addAll(list);` dans la méthode `cr
 Commit de correction : https://github.com/apache/commons-collections/pull/255/files/e2564ab6e2ef22f212e09f4c7db33d1b18d803d6#diff-8e53271d5d8299a76d43b0e3c81740fbe660083ae71c5bf2be63846d52156f23R355  
 
 Le commit corrigeant l’erreur n’a pas ajouté de nouveaux tests pour détecter le bug s’il se reproduit. 
+
+### 3) 
+
+
+
+### 4) WebAssembly  
+
+Les principaux avantages à avoir une spécification formelle sont :  
+- WebAssembly est langage bas niveau qui est indépendant de la plateforme, du langage haut niveau et du navigateur qui l'utilise. Cela le rend plus flexible. 
+- WebAssembly est rapide, compact, protable et sécurisé.
+
+WebAssembly est fondé sur 7 concepts principaux : Modules, Functions, Instructions, Trap, Machine Types, Local Variables, Global Variables.
+
+WebAssembly propose un graphe de flow de contrôle permettant notamment de détecter les boucles infinies. 
+
+Cela ne signifie pas que WebAssembly ne devrait pas être testé. 
