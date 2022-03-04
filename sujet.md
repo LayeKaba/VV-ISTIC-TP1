@@ -52,7 +52,39 @@ Le commit corrigeant l’erreur n’a pas ajouté de nouveaux tests pour détect
 
 ### 3) 
 
+Pratique consistant à éprouver des environnements IT en créant des événements perturbateurs, l’ingénierie du chaos est aujourd’hui expérimentée par une majorité d'entreprises 
 
+Plus précisément, 
+l'ingénierie du chaos est une discipline qui consiste à expérimenter sur un système distribué 
+afin de renforcer la confiance dans sa capacité à résister à des conditions turbulentes en production. 
+
+ Les variables métriques suivies 
+
+ - Les  SPS, 
+
+   - Basculement territorial 
+   - Le taux de connexion  
+- Metrique de grain fin 
+   - Le taux de latence 
+   - La charge des requetes  
+   - L’utilisation du CPU du système 
+   - La charge du processeur 
+
+Les expériences concrètes 
+- Construire des hypothèses autour d’un comportement stable 
+- Varier les expériences du monde réel 
+- Les résultats des expériences en production 
+- Automatiser les expériences pour les exécuter en continues 
+
+Nous avons également remarqué que des organisations telles qu'Amazon, Google, Microsoft et Facebook appliquaient des techniques similaires pour tester la résilience de leurs propres systèmes 
+
+Cette technique peut être appliquée dans d’autres domaines autre le streaming, il faudrait définir les principes suivants :  
+
+- L’adoption : Quelles sont les approches qui réussissent à faire adhérer une organisation à cette et pour que les équipes d'ingénieurs de l'organisation l'adoptent ? 
+- L’outillage : définir ses métriques qu’il faudrait suivre, ses infrastructures internes et ses outils internes permettant de faire ces suivis 
+- Modèle d’injection d’évènement :  Définir les évènements à injecter et aussi la combinaison des évènements  
+
+ 
 
 ### 4) WebAssembly  
 
